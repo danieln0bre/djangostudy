@@ -1,22 +1,23 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 # test comment 2
 
 monthly_challenges = {
-    "january": "january challenge",
-    "february": "february challenge",
-    "march": "march challenge",
-    "april": "april challenge",
-    "may": "may challenge",
-    "june": "june challenge",
-    "july": "july challenge",
-    "august": "august challenge",
-    "september": "september challenge",
-    "october": "october challenge",
+    "january": "january text",
+    "february": "february text",
+    "march": "march text",
+    "april": "april text",
+    "may": "may text",
+    "june": "june text",
+    "july": "july text",
+    "august": "august text",
+    "september": "september text",
+    "october": "october text",
     "november": None,
-    "december": "december challenge",
+    "december": "december text",
 }
 
 
@@ -47,4 +48,4 @@ def monthly_challenge(request, month):
             "month_name": month,
         })
     except:
-        return HttpResponseNotFound("<h1>not found</h1>")
+        raise Http404()
